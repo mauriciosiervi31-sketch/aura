@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exercício 4</title>
+</head>
+<body>
+
+<script>
+  const secreto = 7;
+
+  while (true) {
+    let p = prompt("EXERCÍCIO 4 — Número Secreto\nAdivinhe o número:");
+
+    if (p === null) break;
+
+    let palpite = Number(p);
+
+    if (isNaN(palpite)) {
+      alert("Digite um número válido.");
+      continue;
+    }
+
+    if (palpite === secreto) {
+      alert("Parabéns! Você acertou!");
+    } else if (palpite < secreto) {
+      alert("Errado! O número secreto é MAIOR.");
+    } else {
+      alert("Errado! O número secreto é MENOR.");
+    }
+  }
+</script>
+
+</body>
+</html>
