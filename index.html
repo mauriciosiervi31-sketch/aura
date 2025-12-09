@@ -1,76 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividades de JavaScript</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atividades JavaScript</title>
 
-    <style>
-        body {
-            background: linear-gradient(135deg, #4e54c8, #8f94fb);
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: white;
-            text-align: center;
-        }
+<style>
+    /* Fundo */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: radial-gradient(circle at top, #2b2d42, #000);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
 
-        .container {
-            margin-top: 80px;
-        }
+    /* Card central */
+    .box {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        padding: 40px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+        animation: fadeIn 0.8s;
+    }
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        p {
-            margin-bottom: 30px;
-            font-size: 18px;
-        }
+    /* Título */
+    h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #9bb3ff;
+        text-shadow: 0 0 10px #3f4fff;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+    p {
+        margin-bottom: 25px;
+        font-size: 17px;
+        color: #dcdcff;
+    }
 
-        li {
-            margin: 12px 0;
-        }
+    /* Lista */
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-        a {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 12px 20px;
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            display: inline-block;
-            width: 260px;
-            transition: 0.3s;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
+    /* Botões */
+    a {
+        display: block;
+        margin: 12px 0;
+        padding: 14px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: .5px;
 
-        a:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-            transform: scale(1.05);
-        }
-    </style>
+        background: linear-gradient(90deg, #6a85ff, #7ae1ff);
+        box-shadow: 0 0 10px rgba(122, 225, 255, 0.4);
+
+        transition: 0.25s;
+    }
+
+    a:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 18px rgba(122, 225, 255, 0.7);
+    }
+
+</style>
 </head>
-
 <body>
 
-    <div class="container">
-        <h1>Atividades JavaScript</h1>
-        <p>Escolha um exercício para testar:</p>
+<div class="box">
+    <h1>Atividades</h1>
+    <p>Escolha um exercício:</p>
 
-        <ul>
-            <li><a href="exercicio1.html">Exercício 1 – Maioridade</a></li>
-            <li><a href="exercicio2.html">Exercício 2 – Par ou Ímpar</a></li>
-            <li><a href="exercicio3.html">Exercício 3 – Sistema Bancário</a></li>
-            <li><a href="exercicio4.html">Exercício 4 – Número Secreto</a></li>
-        </ul>
-    </div>
+    <ul>
+        <li><a href="exercicio1.html">Exercício 1 – Maioridade</a></li>
+        <li><a href="exercicio2.html">Exercício 2 – Par ou Ímpar</a></li>
+        <li><a href="exercicio3.html">Exercício 3 – Sistema Bancário</a></li>
+        <li><a href="exercicio4.html">Exercício 4 – Número Secreto</a></li>
+    </ul>
+</div>
 
 </body>
 </html>
