@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exercício 1</title>
+</head>
+<body>
+
+<script>
+  while (true) {
+    let entrada = prompt("EXERCÍCIO 1 — Verificar maioridade\nDigite sua idade:");
+
+    if (entrada === null) break; // Sai sem alert
+
+    let idade = Number(entrada);
+
+    if (isNaN(idade)) {
+      alert("Digite um número válido.");
+      continue;
+    }
+
+    if (idade >= 18) {
+      alert("Você é MAIOR de idade.");
+    } else {
+      alert("Você é MENOR de idade.");
+    }
+  }
+</script>
+
+</body>
+</html>
