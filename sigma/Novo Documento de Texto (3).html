@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exercício 3</title>
+</head>
+<body>
+
+<script>
+  while (true) {
+    let s = prompt("EXERCÍCIO 3 — Sistema Bancário\nDigite o saldo:");
+
+    if (s === null) break;
+
+    let saldo = Number(s);
+
+    if (isNaN(saldo)) {
+      alert("Digite um número válido.");
+      continue;
+    }
+
+    let c = prompt("Digite o valor da compra:");
+
+    if (c === null) continue; // volta pro início sem sair
+
+    let compra = Number(c);
+
+    if (isNaN(compra)) {
+      alert("Digite um número válido.");
+      continue;
+    }
+
+    if (saldo >= compra) {
+      alert("Compra aprovada.");
+    } else {
+      alert("Saldo insuficiente.");
+    }
+  }
+</script>
+
+</body>
+</html>
