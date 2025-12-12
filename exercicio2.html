@@ -1,74 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Exercício 2 — Potência</title>
-  <style>
-    body { font-family: "Segoe UI", Roboto, Arial; background:linear-gradient(180deg,#041027,#071025); color:#eaf6ff; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
-    .wrap { background: rgba(255,255,255,0.04); padding:26px; border-radius:12px; text-align:center; width:95%; max-width:520px; }
-    h2{color:#bfe7ff;margin:0 0 8px}
-    .btn{margin:10px 6px;padding:10px 14px;border-radius:10px;background:#8fbfff;color:#04122a;text-decoration:none;font-weight:600;}
-  </style>
+    <meta charset="UTF-8">
+    <title>Exercício 2</title>
 </head>
 <body>
-  <div class="wrap">
-    <h2>Exercício 2 — Função de potência</h2>
-    <p>Mostramos duas maneiras: implementação manual (loop) e Math.pow</p>
+    <h1>Exercício 2 – Potência</h1>
 
-    <button class="btn" id="manualBtn">Calcular (implementação manual)</button>
-    <button class="btn" id="mathBtn">Calcular (Math.pow)</button>
-    <a class="btn" href="index.html">Voltar ao início</a>
-  </div>
+    <script>
+        // Método manual (sem Math.pow)
+        function potenciaManual(base, expoente) {
+            let resultado = 1;
 
-  <script>
-    // Implementação manual (base^expoente, expoente inteiro >= 0)
-    function potenciaManual(base, expoente) {
-      base = Number(base);
-      expoente = Math.trunc(Number(expoente));
-      if (isNaN(base) || isNaN(expoente)) return NaN;
-      if (expoente < 0) {
-        // tratar expoente negativo: usa 1/(base^|expoente|)
-        let pos = -expoente;
-        let res = 1;
-        for (let i = 0; i < pos; i++) res *= base;
-        return 1 / res;
-      }
-      let resultado = 1;
-      for (let i = 0; i < expoente; i++) resultado *= base;
-      return resultado;
-    }
+            for (let i = 0; i < expoente; i++) {
+                resultado *= base;
+            }
 
-    // Função com Math.pow
-    function potenciaMath(base, expoente) {
-      return Math.pow(Number(base), Number(expoente));
-    }
+            return resultado;
+        }
 
-    document.getElementById('manualBtn').addEventListener('click', () => {
-      const b = prompt("Implementação manual\nDigite a base:");
-      if (b === null) return;
-      const e = prompt("Digite o expoente (inteiro):");
-      if (e === null) return;
-      if (isNaN(Number(b)) || isNaN(Number(e))) {
-        alert("Entrada inválida.");
-        return;
-      }
-      const r = potenciaManual(b, e);
-      alert(`Resultado (manual): ${b} ^ ${e} = ${r}`);
-    });
+        // Método usando Math.pow()
+        function potenciaMath(base, expoente) {
+            return Math.pow(base, expoente);
+        }
 
-    document.getElementById('mathBtn').addEventListener('click', () => {
-      const b = prompt("Math.pow\nDigite a base:");
-      if (b === null) return;
-      const e = prompt("Digite o expoente:");
-      if (e === null) return;
-      if (isNaN(Number(b)) || isNaN(Number(e))) {
-        alert("Entrada inválida.");
-        return;
-      }
-      const r = potenciaMath(b, e);
-      alert(`Resultado (Math.pow): ${b} ^ ${e} = ${r}`);
-    });
-  </script>
+        // Testes
+        alert("Potência manual (3^4): " + potenciaManual(3, 4));
+        alert("Potência usando Math.pow (3^4): " + potenciaMath(3, 4));
+    </script>
 </body>
 </html>
