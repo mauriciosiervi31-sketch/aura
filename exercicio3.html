@@ -1,108 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Exercício 3</title>
+<meta charset="UTF-8">
+<title>Exercício 3 – Funções</title>
+
+<style>
+    body {
+        background: #000;
+        color: white;
+        font-family: Arial;
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    h1 {
+        color: red;
+        text-shadow: 0 0 10px red;
+    }
+
+    .menu, .card {
+        background: #1a1a1a;
+        width: 350px;
+        padding: 25px;
+        border-radius: 15px;
+        margin: 30px auto;
+        box-shadow: 0 0 15px #ff000066;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        background: red;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        background: #222;
+        border: none;
+        color: white;
+        font-size: 16px;
+    }
+
+    #resultado {
+        margin-top: 15px;
+        font-size: 18px;
+        color: red;
+    }
+
+</style>
 </head>
 <body>
 
-  <h1>Exercício 3</h1>
+<h1>Exercício 3 – Escolha uma Função</h1>
 
-  <button onclick="verificarIdade()">Verificar maior idade</button>
-  <br><br>
+<div class="menu">
+    <button onclick="abrir('impar')">Ímpar ou Par</button>
+    <button onclick="abrir('idade')">Maior Idade</button>
+    <button onclick="abrir('saldo')">Saldo Bancário</button>
+</div>
 
-  <button onclick="numeroOculto()">Número oculto</button>
-  <br><br>
+<div id="conteudo"></div>
 
-  <button onclick="verificarParImpar()">Par ou ímpar</button>
-  <br><br>
+<script>
+function abrir(tipo) {
+    let area = document.getElementById("conteudo");
 
-  <button onclick="sistemaBancario()">Sistema bancário</button>
-
-  <script>
-
-    // ⚠ NADA será executado sozinho
-
-    function verificarIdade() {
-      let idade = prompt("Digite sua idade:");
-      if (idade === null) return;
-      idade = Number(idade);
-      if (isNaN(idade)) { alert("Digite um número válido!"); return; }
-
-      if (idade >= 18) alert("Maior de idade");
-      else alert("Menor de idade");
+    if (tipo === "impar") {
+        area.innerHTML = `
+            <div class='card'>
+                <h2>Ímpar ou Par</h2>
+                <input id="num" type="number" placeholder="Digite um número">
+                <button onclick="verImparPar()">Verificar</button>
+                <p id="resultado"></p>
+            </div>
+        `;
     }
 
-    function numeroOculto() {
-      const secreto = 7;
-      let chute = prompt("Adivinhe o número oculto (1 a 10):");
-      if (chute === null) return;
-      chute = Number(chute);
-      if (isNaN(chute)) { alert("Digite um número válido!"); return; }
-
-      if (chute === secreto) alert("Acertou!");
-      else alert("Errou! O número era " + secreto);
+    if (tipo === "idade") {
+        area.innerHTML = `
+            <div class='card'>
+                <h2>Maior Idade</h2>
+                <input id="idade" type="number" placeholder="Digite sua idade">
+                <button onclick="verIdade()">Verificar</button>
+                <p id="resultado"></p>
+            </div>
+        `;
     }
 
-    function verificarParImpar() {
-      let n = prompt("Digite um número:");
-      if (n === null) return;
-      n = Number(n);
-      if (isNaN(n)) { alert("Digite um número válido!"); return; }
-
-      if (n % 2 === 0) alert("PAR");
-      else alert("ÍMPAR");
+    if (tipo === "saldo") {
+        area.innerHTML = `
+            <div class='card'>
+                <h2>Saldo Bancário</h2>
+                <input id="saldo" type="number" placeholder="Quanto você tem?">
+                <input id="gasto" type="number" placeholder="Quanto deseja gastar?">
+                <button onclick="verSaldo()">Verificar</button>
+                <p id="resultado"></p>
+            </div>
+        `;
     }
+}
 
-    function sistemaBancario() {
-      let saldo = 0;
+// Funções
 
-      while (true) {
-        let opcao = prompt(
-          "Sistema Bancário:\n1 - Depositar\n2 - Sacar\n3 - Ver saldo\n4 - Sair"
-        );
+function verImparPar() {
+    let n = Number(document.getElementById("num").value);
 
-        if (opcao === null) return;
+    let msg = (n % 2 === 0) ? "É PAR" : "É ÍMPAR";
 
-        if (opcao === "1") {
-          let dep = prompt("Valor do depósito:");
-          if (dep === null) continue;
-          dep = Number(dep);
+    document.getElementById("resultado").innerHTML = msg;
+}
 
-          if (isNaN(dep) || dep <= 0) { alert("Valor inválido!"); continue; }
+function verIdade() {
+    let idade = Number(document.getElementById("idade").value);
 
-          saldo += dep;
-          alert("Depósito realizado! Saldo: " + saldo);
-        }
+    let msg = idade >= 18 ? "Maior de idade" : "Menor de idade";
 
-        else if (opcao === "2") {
-          let saq = prompt("Valor do saque:");
-          if (saq === null) continue;
-          saq = Number(saq);
+    document.getElementById("resultado").innerHTML = msg;
+}
 
-          if (isNaN(saq) || saq <= 0) { alert("Valor inválido!"); continue; }
-          if (saq > saldo) { alert("Saldo insuficiente!"); continue; }
+function verSaldo() {
+    let saldo = Number(document.getElementById("saldo").value);
+    let gasto = Number(document.getElementById("gasto").value);
 
-          saldo -= saq;
-          alert("Saque realizado! Saldo: " + saldo);
-        }
+    let msg = saldo >= gasto ? "Saldo suficiente" : "Saldo insuficiente";
 
-        else if (opcao === "3") {
-          alert("Saldo atual: " + saldo);
-        }
-
-        else if (opcao === "4") {
-          alert("Saindo...");
-          return;
-        }
-
-        else {
-          alert("Opção inválida!");
-        }
-      }
-    }
-
-  </script>
+    document.getElementById("resultado").innerHTML = msg;
+}
+</script>
 
 </body>
 </html>
