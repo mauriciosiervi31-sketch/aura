@@ -2,142 +2,107 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Exercício 3 – Vários Cálculos</title>
+  <title>Exercício 3</title>
 </head>
 <body>
-  <h1>Exercício 3</h1>
-  <p>Clique em uma opção:</p>
 
-  <button id="idade">Verificar maior idade</button><br><br>
-  <button id="oculto">Número oculto</button><br><br>
-  <button id="parImpar">Verificar se é par ou impar</button><br><br>
-  <button id="banco">Sistema bancário</button>
+  <h1>Exercício 3</h1>
+
+  <button onclick="verificarIdade()">Verificar maior idade</button>
+  <br><br>
+
+  <button onclick="numeroOculto()">Número oculto</button>
+  <br><br>
+
+  <button onclick="verificarParImpar()">Par ou ímpar</button>
+  <br><br>
+
+  <button onclick="sistemaBancario()">Sistema bancário</button>
 
   <script>
-    // 1) MAIOR IDADE
+
+    // ⚠ NADA será executado sozinho
+
     function verificarIdade() {
-      const idadeStr = prompt("Digite sua idade:");
-      if (idadeStr === null) return;
+      let idade = prompt("Digite sua idade:");
+      if (idade === null) return;
+      idade = Number(idade);
+      if (isNaN(idade)) { alert("Digite um número válido!"); return; }
 
-      const idade = Number(idadeStr);
-
-      if (isNaN(idade)) {
-        alert("Digite um número válido.");
-        return;
-      }
-
-      if (idade >= 18) {
-        alert("Você é maior de idade.");
-      } else {
-        alert("Você é menor de idade.");
-      }
+      if (idade >= 18) alert("Maior de idade");
+      else alert("Menor de idade");
     }
 
-    // 2) NÚMERO OCULTO (adivinhar número de 1 a 10)
     function numeroOculto() {
-      const secreto = 7; // número fixo só como exemplo da atividade
-      const chuteStr = prompt("Tente adivinhar o número oculto (1 a 10):");
-      if (chuteStr === null) return;
+      const secreto = 7;
+      let chute = prompt("Adivinhe o número oculto (1 a 10):");
+      if (chute === null) return;
+      chute = Number(chute);
+      if (isNaN(chute)) { alert("Digite um número válido!"); return; }
 
-      const chute = Number(chuteStr);
-
-      if (isNaN(chute)) {
-        alert("Digite um número válido.");
-        return;
-      }
-
-      if (chute === secreto) {
-        alert("Acertou!");
-      } else {
-        alert("Errou... o número era " + secreto);
-      }
+      if (chute === secreto) alert("Acertou!");
+      else alert("Errou! O número era " + secreto);
     }
 
-    // 3) PAR OU ÍMPAR
     function verificarParImpar() {
-      const nStr = prompt("Digite um número:");
-      if (nStr === null) return;
+      let n = prompt("Digite um número:");
+      if (n === null) return;
+      n = Number(n);
+      if (isNaN(n)) { alert("Digite um número válido!"); return; }
 
-      const n = Number(nStr);
-
-      if (isNaN(n)) {
-        alert("Digite um número válido.");
-        return;
-      }
-
-      if (n % 2 === 0) {
-        alert("Esse número é PAR.");
-      } else {
-        alert("Esse número é ÍMPAR.");
-      }
+      if (n % 2 === 0) alert("PAR");
+      else alert("ÍMPAR");
     }
 
-    // 4) SISTEMA BANCÁRIO (depósito, saque e saldo)
     function sistemaBancario() {
       let saldo = 0;
 
       while (true) {
-        const opcao = prompt(
-          "Sistema Bancário:\n" +
-          "1 - Depositar\n" +
-          "2 - Sacar\n" +
-          "3 - Ver saldo\n" +
-          "4 - Sair\n\n" +
-          "Escolha uma opção:"
+        let opcao = prompt(
+          "Sistema Bancário:\n1 - Depositar\n2 - Sacar\n3 - Ver saldo\n4 - Sair"
         );
 
         if (opcao === null) return;
 
-        switch (opcao) {
-          case "1":
-            const depStr = prompt("Valor do depósito:");
-            if (depStr === null) continue;
+        if (opcao === "1") {
+          let dep = prompt("Valor do depósito:");
+          if (dep === null) continue;
+          dep = Number(dep);
 
-            const dep = Number(depStr);
-            if (isNaN(dep) || dep <= 0) {
-              alert("Valor inválido.");
-              continue;
-            }
-            saldo += dep;
-            alert("Depósito realizado! Saldo atual: " + saldo);
-            break;
+          if (isNaN(dep) || dep <= 0) { alert("Valor inválido!"); continue; }
 
-          case "2":
-            const saqStr = prompt("Valor do saque:");
-            if (saqStr === null) continue;
+          saldo += dep;
+          alert("Depósito realizado! Saldo: " + saldo);
+        }
 
-            const saq = Number(saqStr);
-            if (isNaN(saq) || saq <= 0) {
-              alert("Valor inválido.");
-              continue;
-            }
-            if (saq > saldo) {
-              alert("Saldo insuficiente!");
-              continue;
-            }
-            saldo -= saq;
-            alert("Saque realizado! Saldo atual: " + saldo);
-            break;
+        else if (opcao === "2") {
+          let saq = prompt("Valor do saque:");
+          if (saq === null) continue;
+          saq = Number(saq);
 
-          case "3":
-            alert("Seu saldo atual é: " + saldo);
-            break;
+          if (isNaN(saq) || saq <= 0) { alert("Valor inválido!"); continue; }
+          if (saq > saldo) { alert("Saldo insuficiente!"); continue; }
 
-          case "4":
-            alert("Saindo...");
-            return;
+          saldo -= saq;
+          alert("Saque realizado! Saldo: " + saldo);
+        }
 
-          default:
-            alert("Opção inválida.");
+        else if (opcao === "3") {
+          alert("Saldo atual: " + saldo);
+        }
+
+        else if (opcao === "4") {
+          alert("Saindo...");
+          return;
+        }
+
+        else {
+          alert("Opção inválida!");
         }
       }
     }
 
-    // Conectar botões → funções
-    document.getElementById("idade").addEventListener("click", verificarIdade);
-    document.getElementById("oculto").addEventListener("click", numeroOculto);
-    document.getElementById("parImpar").addEventListener("click", verificarParImpar);
-    document.getElementById("banco").addEventListener("click", sistemaBancario);
   </script>
+
 </body>
 </html>
