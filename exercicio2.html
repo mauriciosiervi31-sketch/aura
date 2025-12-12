@@ -1,33 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Exercício 2 – Potência</title>
+  <meta charset="utf-8">
+  <title>Exercício 2 – Potência</title>
 </head>
 <body>
-    <h1>Exercício 2 – Função Potência</h1>
+  <h1>Exercício 2 – Potência</h1>
 
-    <script>
+  <script>
+    function potencia() {
+      const base = Number(prompt("Digite a base:"));
+      const expoente = Number(prompt("Digite o expoente:"));
 
-        // 1 — Potência feita na mão
-        function potenciaManual(base, expoente) {
-            let resultado = 1;
+      const resultado = Math.pow(base, expoente);
 
-            for (let i = 0; i < expoente; i++) {
-                resultado *= base;
-            }
+      alert(`${base} elevado a ${expoente} = ${resultado}`);
+    }
 
-            return resultado;
-        }
-
-        // 2 — Potência usando Math.pow()
-        function potenciaMath(base, expoente) {
-            return Math.pow(base, expoente);
-        }
-
-        alert("Potência manual (3^4): " + potenciaManual(3, 4));
-        alert("Potência com Math.pow (3^4): " + potenciaMath(3, 4));
-
-    </script>
+    // CHAMADA ÚNICA — sem exemplo!
+    potencia();
+  </script>
 </body>
 </html>
