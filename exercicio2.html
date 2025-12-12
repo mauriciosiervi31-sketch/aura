@@ -2,13 +2,14 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Exercício 2</title>
+    <title>Exercício 2 – Potência</title>
 </head>
 <body>
-    <h1>Exercício 2 – Potência</h1>
+    <h1>Exercício 2 – Função Potência</h1>
 
     <script>
-        // Método manual (sem Math.pow)
+
+        // 1 — Potência feita na mão
         function potenciaManual(base, expoente) {
             let resultado = 1;
 
@@ -19,14 +20,14 @@
             return resultado;
         }
 
-        // Método usando Math.pow()
+        // 2 — Potência usando Math.pow()
         function potenciaMath(base, expoente) {
             return Math.pow(base, expoente);
         }
 
-        // Testes
         alert("Potência manual (3^4): " + potenciaManual(3, 4));
-        alert("Potência usando Math.pow (3^4): " + potenciaMath(3, 4));
+        alert("Potência com Math.pow (3^4): " + potenciaMath(3, 4));
+
     </script>
 </body>
 </html>
