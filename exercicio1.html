@@ -1,22 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <title>Exercício 1 – Multiplicação</title>
-</head>
-<body>
-  <h1>Exercício 1 – Multiplicação</h1>
+<meta charset="UTF-8">
+<title>Exercício 1 – Multiplicação</title>
 
-  <script>
-    function multiplicar() {
-      const a = Number(prompt("Digite o primeiro número:"));
-      const b = Number(prompt("Digite o segundo número:"));
-
-      alert(`${a} x ${b} = ${a * b}`);
+<style>
+    body {
+        background: #111;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
     }
 
-    // CHAMA A FUNÇÃO APENAS UMA VEZ, sem exemplo!
-    multiplicar();
-  </script>
+    .card {
+        background: #1a1a1a;
+        padding: 30px;
+        width: 350px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px #ff000055;
+        text-align: center;
+    }
+
+    h1 {
+        color: red;
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 90%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        background: #222;
+        color: white;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 20px;
+        width: 100%;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background: red;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #cc0000;
+        transform: scale(1.05);
+    }
+
+    #resultado {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #ff4444;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="card">
+    <h1>Multiplicação</h1>
+
+    <input type="number" id="n1" placeholder="Digite o primeiro número">
+    <input type="number" id="n2" placeholder="Digite o segundo número">
+
+    <button onclick="multiplicar()">Calcular</button>
+
+    <p id="resultado"></p>
+</div>
+
+<script>
+function multiplicar() {
+    let a = Number(document.getElementById("n1").value);
+    let b = Number(document.getElementById("n2").value);
+
+    if (isNaN(a) || isNaN(b)) {
+        document.getElementById("resultado").innerHTML = "Digite valores válidos!";
+        return;
+    }
+
+    let r = a * b;
+
+    document.getElementById("resultado").innerHTML =
+        `${a} × ${b} = <strong>${r}</strong>`;
+}
+</script>
+
 </body>
 </html>
