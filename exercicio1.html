@@ -1,48 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Exercício 1 — Multiplicação</title>
-  <style>
-    body { font-family: "Segoe UI", Roboto, Arial; background:#071025; color:#eaf6ff; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
-    .wrap { background: rgba(255,255,255,0.04); padding:24px; border-radius:12px; text-align:center; width:95%; max-width:500px; }
-    h2{color:#bfe7ff;margin:0 0 8px}
-    .btn{margin:10px 6px;padding:10px 14px;border-radius:10px;background:#7ef0d7;color:#062029;text-decoration:none;font-weight:600;}
-  </style>
+    <meta charset="UTF-8">
+    <title>Exercício 1</title>
 </head>
 <body>
-  <div class="wrap">
-    <h2>Exercício 1 — Função de multiplicação</h2>
-    <p>Insira dois números para multiplicar (a função retorna o produto).</p>
+    <h1>Exercício 1 – Multiplicação</h1>
 
-    <button class="btn" id="runBtn">Executar exercício</button>
-    <a class="btn" href="index.html">Voltar ao início</a>
-  </div>
+    <script>
+        // Função que recebe 2 números e retorna a multiplicação
+        function multiplicar(a, b) {
+            return a * b;
+        }
 
-  <script>
-    // Função que recebe dois inteiros e retorna a multiplicação
-    function multiplicar(a, b) {
-      // garante que seja inteiro (se quiser apenas números reais, remova Math.trunc)
-      const ai = Math.trunc(Number(a));
-      const bi = Math.trunc(Number(b));
-      return ai * bi;
-    }
-
-    document.getElementById('runBtn').addEventListener('click', () => {
-      const a = prompt("Exercício 1 — Multiplicação\nDigite o primeiro número (inteiro):");
-      if (a === null) return; // usuário cancelou
-      const b = prompt("Digite o segundo número (inteiro):");
-      if (b === null) return;
-
-      if (isNaN(Number(a)) || isNaN(Number(b))) {
-        alert("Entrada inválida. Use números.");
-        return;
-      }
-
-      const resultado = multiplicar(a, b);
-      alert(`Resultado: ${a} × ${b} = ${resultado}`);
-    });
-  </script>
+        // Teste da função
+        let resultado = multiplicar(5, 7);
+        alert("Resultado da multiplicação: " + resultado);
+    </script>
 </body>
 </html>
