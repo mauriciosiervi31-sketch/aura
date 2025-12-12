@@ -1,70 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Exercício 3 – Funções da Aula 08</title>
+  <meta charset="UTF-8">
+  <title>Exercício 3 – Vários Cálculos</title>
 </head>
 <body>
-    <h1>Exercício 3 – Reimplementação da Aula 08</h1>
+  <h1>Exercício 3</h1>
+  <p>Clique em uma opção:</p>
 
-    <script>
+  <button id="idade">Verificar maior idade</button><br><br>
+  <button id="oculto">Número oculto</button><br><br>
+  <button id="parImpar">Verificar se é par ou impar</button><br><br>
+  <button id="banco">Sistema bancário</button>
 
-        // ----------------------------
-        // 1 — ÍMPAR OU PAR
-        // ----------------------------
-        function verificarParOuImpar(numero) {
-            if (numero % 2 === 0) {
-                return numero + " é PAR";
-            } else {
-                return numero + " é ÍMPAR";
+  <script>
+    // 1) MAIOR IDADE
+    function verificarIdade() {
+      const idadeStr = prompt("Digite sua idade:");
+      if (idadeStr === null) return;
+
+      const idade = Number(idadeStr);
+
+      if (isNaN(idade)) {
+        alert("Digite um número válido.");
+        return;
+      }
+
+      if (idade >= 18) {
+        alert("Você é maior de idade.");
+      } else {
+        alert("Você é menor de idade.");
+      }
+    }
+
+    // 2) NÚMERO OCULTO (adivinhar número de 1 a 10)
+    function numeroOculto() {
+      const secreto = 7; // número fixo só como exemplo da atividade
+      const chuteStr = prompt("Tente adivinhar o número oculto (1 a 10):");
+      if (chuteStr === null) return;
+
+      const chute = Number(chuteStr);
+
+      if (isNaN(chute)) {
+        alert("Digite um número válido.");
+        return;
+      }
+
+      if (chute === secreto) {
+        alert("Acertou!");
+      } else {
+        alert("Errou... o número era " + secreto);
+      }
+    }
+
+    // 3) PAR OU ÍMPAR
+    function verificarParImpar() {
+      const nStr = prompt("Digite um número:");
+      if (nStr === null) return;
+
+      const n = Number(nStr);
+
+      if (isNaN(n)) {
+        alert("Digite um número válido.");
+        return;
+      }
+
+      if (n % 2 === 0) {
+        alert("Esse número é PAR.");
+      } else {
+        alert("Esse número é ÍMPAR.");
+      }
+    }
+
+    // 4) SISTEMA BANCÁRIO (depósito, saque e saldo)
+    function sistemaBancario() {
+      let saldo = 0;
+
+      while (true) {
+        const opcao = prompt(
+          "Sistema Bancário:\n" +
+          "1 - Depositar\n" +
+          "2 - Sacar\n" +
+          "3 - Ver saldo\n" +
+          "4 - Sair\n\n" +
+          "Escolha uma opção:"
+        );
+
+        if (opcao === null) return;
+
+        switch (opcao) {
+          case "1":
+            const depStr = prompt("Valor do depósito:");
+            if (depStr === null) continue;
+
+            const dep = Number(depStr);
+            if (isNaN(dep) || dep <= 0) {
+              alert("Valor inválido.");
+              continue;
             }
-        }
+            saldo += dep;
+            alert("Depósito realizado! Saldo atual: " + saldo);
+            break;
 
-        alert(verificarParOuImpar(7));
+          case "2":
+            const saqStr = prompt("Valor do saque:");
+            if (saqStr === null) continue;
 
-
-        // ----------------------------
-        // 2 — MAIOR IDADE
-        // ----------------------------
-        function verificarIdade(idade) {
-            if (idade >= 18) {
-                return "Maior de idade";
-            } else {
-                return "Menor de idade";
+            const saq = Number(saqStr);
+            if (isNaN(saq) || saq <= 0) {
+              alert("Valor inválido.");
+              continue;
             }
-        }
-
-        alert(verificarIdade(15));
-
-
-        // ----------------------------
-        // 3 — SISTEMA BANCÁRIO
-        // ----------------------------
-        function sistemaBancario(saldo, operacao, valor) {
-
-            if (operacao === "deposito") {
-                saldo += valor;
-                return "Depósito realizado. Novo saldo: " + saldo;
-
-            } else if (operacao === "saque") {
-
-                if (valor > saldo) {
-                    return "Saldo insuficiente!";
-                }
-
-                saldo -= valor;
-                return "Saque realizado. Novo saldo: " + saldo;
-
-            } else {
-                return "Operação inválida!";
+            if (saq > saldo) {
+              alert("Saldo insuficiente!");
+              continue;
             }
+            saldo -= saq;
+            alert("Saque realizado! Saldo atual: " + saldo);
+            break;
+
+          case "3":
+            alert("Seu saldo atual é: " + saldo);
+            break;
+
+          case "4":
+            alert("Saindo...");
+            return;
+
+          default:
+            alert("Opção inválida.");
         }
+      }
+    }
 
-        alert(sistemaBancario(100, "deposito", 50));
-        alert(sistemaBancario(150, "saque", 30));
-        alert(sistemaBancario(120, "saque", 200));
-
-    </script>
-
+    // Conectar botões → funções
+    document.getElementById("idade").addEventListener("click", verificarIdade);
+    document.getElementById("oculto").addEventListener("click", numeroOculto);
+    document.getElementById("parImpar").addEventListener("click", verificarParImpar);
+    document.getElementById("banco").addEventListener("click", sistemaBancario);
+  </script>
 </body>
 </html>
