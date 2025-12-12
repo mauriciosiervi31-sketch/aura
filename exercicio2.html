@@ -64,21 +64,21 @@
 
 <div class="card">
     <input id="base" type="number" placeholder="Digite a base (ex: 5)">
-    <input id="expo" type="number" placeholder="Digite o expoente (ex: 2)">
-    <button onclick="potencia()">Calcular</button>
+    <input id="expoente" type="number" placeholder="Digite o expoente (ex: 2)">
+    <button onclick="calcularPotencia()">Calcular</button>
 
     <p id="resultado"></p>
 </div>
 
 <script>
-function potencia() {
-    let base = Number(document.getElementById("base").value);
-    let exp = Number(document.getElementById("expo").value);
+function calcularPotencia() {
+    let b = Number(document.getElementById("base").value);
+    let e = Number(document.getElementById("expoente").value);
 
-    let r = base ** exp;
+    let r = b ** e;
 
     document.getElementById("resultado").innerHTML =
-        `${base}<sup>${exp}</sup> = <b>${r}</b>`;
+        `${b}<sup>${e}</sup> = <b>${r}</b>`;
 }
 </script>
 
