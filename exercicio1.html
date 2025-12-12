@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Exercício 1 – Multiplicação</title>
+  <meta charset="utf-8">
+  <title>Exercício 1 – Multiplicação</title>
 </head>
 <body>
-    <h1>Exercício 1 – Multiplicação</h1>
+  <h1>Exercício 1 – Multiplicação</h1>
 
-    <script>
+  <script>
+    function multiplicar() {
+      const a = Number(prompt("Digite o primeiro número:"));
+      const b = Number(prompt("Digite o segundo número:"));
 
-        function multiplicar(n1, n2) {
-            return n1 * n2;
-        }
+      const resultado = a * b;
 
-        alert("Resultado da multiplicação: " + multiplicar(5, 4));
+      alert(`${a} x ${b} = ${resultado}`);
+    }
 
-    </script>
+    multiplicar(); // executa ao abrir a página
+  </script>
 </body>
 </html>
