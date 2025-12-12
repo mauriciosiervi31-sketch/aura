@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>Exercício 2 – Potência</title>
 </head>
 <body>
   <h1>Exercício 2 – Potência</h1>
 
-  <script>
-    function potencia() {
-      const base = Number(prompt("Digite a base:"));
-      const expoente = Number(prompt("Digite o expoente:"));
+  <p>Clique no botão e digite os números.</p>
+  <button id="btnCalc">Calcular potência</button>
 
+  <script>
+    // Função que calcula potência e mostra resultado formatado
+    function calcularPotenciaInterativa() {
+      const baseStr = prompt("Digite a base (ex: 5):");
+      if (baseStr === null) return; // usuário cancelou
+
+      const expoenteStr = prompt("Digite o expoente (ex: 2):");
+      if (expoenteStr === null) return; // usuário cancelou
+
+      const base = Number(baseStr.replace(",", "."));
+      const expoente = Number(expoenteStr.replace(",", "."));
+
+      if (isNaN(base) || isNaN(expoente)) {
+        alert("Entrada inválida. Digite números válidos.");
+        return;
+      }
+
+      // Calcula potência (suporta expoente inteiro e negativo)
       const resultado = Math.pow(base, expoente);
 
       alert(`${base} elevado a ${expoente} = ${resultado}`);
     }
 
-    // CHAMADA ÚNICA — sem exemplo!
-    potencia();
+    // Apenas conecta o botão — nada roda automaticamente ao abrir a página
+    document.getElementById("btnCalc").addEventListener("click", calcularPotenciaInterativa);
   </script>
 </body>
 </html>
