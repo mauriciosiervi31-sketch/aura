@@ -1,93 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Exercício 3 — Reimplementação com funções</title>
-  <style>
-    body { font-family: "Segoe UI", Roboto, Arial; background:#03121b; color:#eaf6ff; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; }
-    .wrap { background: rgba(255,255,255,0.03); padding:22px; border-radius:12px; width:95%; max-width:520px; text-align:center; }
-    h2{color:#bfe7ff;margin-bottom:6px}
-    p{color:#cfe9ff;margin-top:0;margin-bottom:12px}
-    .btn{margin:8px; padding:10px 14px; border-radius:10px; background:#7ef0d7; color:#062029; font-weight:700; text-decoration:none; display:inline-block;}
-    .back{background:#9bb3ff;color:#04122a;}
-  </style>
+    <meta charset="UTF-8">
+    <title>Exercício 2</title>
 </head>
 <body>
-  <div class="wrap">
-    <h2>Exercício 3 — Reimplementação com funções</h2>
-    <p>Use os botões para testar cada função (alert mostra o resultado).</p>
+    <h1>Exercício 2 – Potência</h1>
 
-    <div>
-      <button class="btn" id="btnMaior">Verificar Maioridade</button>
-      <button class="btn" id="btnPar">Verificar Par/Ímpar</button>
-      <button class="btn" id="btnBanco">Sistema Bancário</button>
-      <button class="btn" id="btnSecreto">Número Secreto</button>
-    </div>
+    <script>
+        // Método manual (sem Math.pow)
+        function potenciaManual(base, expoente) {
+            let resultado = 1;
 
-    <div style="margin-top:16px">
-      <a class="btn back" href="index.html">Voltar ao início</a>
-    </div>
-  </div>
+            for (let i = 0; i < expoente; i++) {
+                resultado *= base;
+            }
 
-  <script>
-    // 1) Função verificarMaioridade: recebe idade e retorna string
-    function verificarMaioridade(idade) {
-      idade = Number(idade);
-      if (isNaN(idade)) return "Entrada inválida.";
-      return (idade >= 18) ? "Você é MAIOR de idade." : "Você é MENOR de idade.";
-    }
+            return resultado;
+        }
 
-    // 2) Função parOuImpar: recebe número e retorna string
-    function parOuImpar(n) {
-      n = Number(n);
-      if (isNaN(n)) return "Entrada inválida.";
-      return (n % 2 === 0) ? "O número é PAR." : "O número é ÍMPAR.";
-    }
+        // Método usando Math.pow()
+        function potenciaMath(base, expoente) {
+            return Math.pow(base, expoente);
+        }
 
-    // 3) Função podeComprar: recebe saldo e valor, retorna boolean ou mensagem
-    function podeComprar(saldo, compra) {
-      saldo = Number(saldo); compra = Number(compra);
-      if (isNaN(saldo) || isNaN(compra)) return "Entrada inválida.";
-      return (saldo >= compra) ? "Compra aprovada." : "Saldo insuficiente.";
-    }
-
-    // 4) Número secreto: função que recebe palpite e número secreto e retorna mensagem
-    function testarSecreto(palpite, secreto) {
-      palpite = Number(palpite);
-      if (isNaN(palpite)) return "Entrada inválida.";
-      if (palpite === secreto) return "Parabéns! Você acertou!";
-      if (palpite < secreto) return "Errado — o número secreto é MAIOR.";
-      return "Errado — o número secreto é MENOR.";
-    }
-
-    // Eventos dos botões
-    document.getElementById('btnMaior').addEventListener('click', () => {
-      const e = prompt("Verificar maioridade\nDigite sua idade:");
-      if (e === null) return;
-      alert(verificarMaioridade(e));
-    });
-
-    document.getElementById('btnPar').addEventListener('click', () => {
-      const n = prompt("Par ou Ímpar\nDigite um número:");
-      if (n === null) return;
-      alert(parOuImpar(n));
-    });
-
-    document.getElementById('btnBanco').addEventListener('click', () => {
-      const s = prompt("Sistema bancário\nDigite o saldo da conta:");
-      if (s === null) return;
-      const c = prompt("Digite o valor da compra:");
-      if (c === null) return;
-      alert(podeComprar(s, c));
-    });
-
-    document.getElementById('btnSecreto').addEventListener('click', () => {
-      const secreto = 7; // você pode alterar
-      const p = prompt("Número secreto\nTente adivinhar (entre 1 e 10):");
-      if (p === null) return;
-      alert(testarSecreto(p, secreto));
-    });
-  </script>
+        // Testes
+        alert("Potência manual (3^4): " + potenciaManual(3, 4));
+        alert("Potência usando Math.pow (3^4): " + potenciaMath(3, 4));
+    </script>
 </body>
 </html>
