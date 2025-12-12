@@ -2,31 +2,69 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Exercício 2</title>
+    <title>Exercício 3 – Funções da Aula 08</title>
 </head>
 <body>
-    <h1>Exercício 2 – Potência</h1>
+    <h1>Exercício 3 – Reimplementação da Aula 08</h1>
 
     <script>
-        // Método manual (sem Math.pow)
-        function potenciaManual(base, expoente) {
-            let resultado = 1;
 
-            for (let i = 0; i < expoente; i++) {
-                resultado *= base;
+        // ----------------------------
+        // 1 — ÍMPAR OU PAR
+        // ----------------------------
+        function verificarParOuImpar(numero) {
+            if (numero % 2 === 0) {
+                return numero + " é PAR";
+            } else {
+                return numero + " é ÍMPAR";
             }
-
-            return resultado;
         }
 
-        // Método usando Math.pow()
-        function potenciaMath(base, expoente) {
-            return Math.pow(base, expoente);
+        alert(verificarParOuImpar(7));
+
+
+        // ----------------------------
+        // 2 — MAIOR IDADE
+        // ----------------------------
+        function verificarIdade(idade) {
+            if (idade >= 18) {
+                return "Maior de idade";
+            } else {
+                return "Menor de idade";
+            }
         }
 
-        // Testes
-        alert("Potência manual (3^4): " + potenciaManual(3, 4));
-        alert("Potência usando Math.pow (3^4): " + potenciaMath(3, 4));
+        alert(verificarIdade(15));
+
+
+        // ----------------------------
+        // 3 — SISTEMA BANCÁRIO
+        // ----------------------------
+        function sistemaBancario(saldo, operacao, valor) {
+
+            if (operacao === "deposito") {
+                saldo += valor;
+                return "Depósito realizado. Novo saldo: " + saldo;
+
+            } else if (operacao === "saque") {
+
+                if (valor > saldo) {
+                    return "Saldo insuficiente!";
+                }
+
+                saldo -= valor;
+                return "Saque realizado. Novo saldo: " + saldo;
+
+            } else {
+                return "Operação inválida!";
+            }
+        }
+
+        alert(sistemaBancario(100, "deposito", 50));
+        alert(sistemaBancario(150, "saque", 30));
+        alert(sistemaBancario(120, "saque", 200));
+
     </script>
+
 </body>
 </html>
