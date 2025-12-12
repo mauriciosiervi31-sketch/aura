@@ -1,40 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <title>Exercício 2 – Potência</title>
-</head>
-<body>
-  <h1>Exercício 2 – Potência</h1>
+<meta charset="UTF-8">
+<title>Exercício 2 – Potência</title>
 
-  <p>Clique no botão e digite os números.</p>
-  <button id="btnCalc">Calcular potência</button>
-
-  <script>
-    // Função que calcula potência e mostra resultado formatado
-    function calcularPotenciaInterativa() {
-      const baseStr = prompt("Digite a base (ex: 5):");
-      if (baseStr === null) return; // usuário cancelou
-
-      const expoenteStr = prompt("Digite o expoente (ex: 2):");
-      if (expoenteStr === null) return; // usuário cancelou
-
-      const base = Number(baseStr.replace(",", "."));
-      const expoente = Number(expoenteStr.replace(",", "."));
-
-      if (isNaN(base) || isNaN(expoente)) {
-        alert("Entrada inválida. Digite números válidos.");
-        return;
-      }
-
-      // Calcula potência (suporta expoente inteiro e negativo)
-      const resultado = Math.pow(base, expoente);
-
-      alert(`${base} elevado a ${expoente} = ${resultado}`);
+<style>
+    body {
+        background: #000;
+        color: white;
+        font-family: Arial;
+        text-align: center;
+        padding-top: 40px;
     }
 
-    // Apenas conecta o botão — nada roda automaticamente ao abrir a página
-    document.getElementById("btnCalc").addEventListener("click", calcularPotenciaInterativa);
-  </script>
+    h1 {
+        color: red;
+        text-shadow: 0 0 10px red;
+    }
+
+    .card {
+        background: #1a1a1a;
+        width: 350px;
+        padding: 25px;
+        border-radius: 15px;
+        margin: 30px auto;
+        box-shadow: 0 0 15px #ff000066;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        background: #222;
+        border: none;
+        color: white;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 15px;
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        background: red;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    #resultado {
+        margin-top: 15px;
+        font-size: 18px;
+        color: red;
+    }
+</style>
+
+</head>
+<body>
+
+<h1>Exercício 2 – Potência</h1>
+
+<div class="card">
+    <input id="base" type="number" placeholder="Digite a base (ex: 5)">
+    <input id="expo" type="number" placeholder="Digite o expoente (ex: 2)">
+    <button onclick="potencia()">Calcular</button>
+
+    <p id="resultado"></p>
+</div>
+
+<script>
+function potencia() {
+    let base = Number(document.getElementById("base").value);
+    let exp = Number(document.getElementById("expo").value);
+
+    let r = base ** exp;
+
+    document.getElementById("resultado").innerHTML =
+        `${base}<sup>${exp}</sup> = <b>${r}</b>`;
+}
+</script>
+
 </body>
 </html>
